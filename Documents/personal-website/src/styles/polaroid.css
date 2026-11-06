@@ -1,0 +1,115 @@
+.polaroid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  width: 100%;
+  max-width: min(850px, calc(150vh - 150px));
+  margin-inline: auto;
+  padding: var(--space-2);
+}
+
+.polaroid {
+  --polaroid-radius: 18px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--polaroid-radius);
+  cursor: pointer;
+  transform-origin: center center;
+  box-shadow: 2px 4px 10px color-mix(in srgb, var(--berry) 12%, transparent);
+  transition: box-shadow 250ms ease;
+}
+
+.polaroid-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: inherit;
+}
+
+.polaroid-h3 {
+  font-family: "GroovyWaves", sans-serif;
+}
+
+.polaroid-front {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.polaroid-category {
+  position: absolute;
+  left: var(--space-1);
+  bottom: var(--space-1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  max-width: calc(100% - var(--space-2));
+  min-height: 1.8em;
+  padding: 0.35em 0.55em;
+  overflow: hidden;
+  border-radius: 0 8px 8px 0;
+  background: color-mix(in srgb, var(--page-background) 86%, transparent);
+  border-left: 2px solid var(--sky);
+  color: var(--page-foreground);
+  font-family: "Helmet", sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.polaroid-category-visible,
+.polaroid:hover .polaroid-category,
+.polaroid:focus-visible .polaroid-category {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.polaroid-category-caret {
+  flex: 0 0 1px;
+  height: 0.9em;
+  margin-left: 0.2em;
+  border-left: 1px solid currentColor;
+  animation: category-caret-blink 700ms step-end infinite;
+}
+
+@keyframes category-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.polaroid-active {
+  outline: 3px solid var(--accent);
+  outline-offset: 1.5px;
+  border-radius: var(--polaroid-radius);
+}
+
+.polaroid:hover {
+  box-shadow: 5px 12px 22px color-mix(in srgb, var(--berry) 22%, transparent);
+  outline: 2px solid var(--berry);
+  outline-offset: 1.5px;
+  border-radius: var(--polaroid-radius);
+}
+
+.polaroid-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .polaroid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+    max-width: calc(66.667vh - 93px);
+  }
+}

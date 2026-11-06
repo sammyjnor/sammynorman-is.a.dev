@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap");
+
+@font-face {
+  font-family: "GroovyWaves";
+  src: url("/public/fonts/GroovyWavesDemo-G3E1G.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helmet";
+  src: url("/public/fonts/Helmet.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Chunky";
+  src: url("/public/fonts/Chunky.otf") format("opentype");
+}
+
+:root {
+  --warm-black: #140004;
+  --cream: #F8E2CE;
+  --berry: #985D66;
+  --sky: #85C7F2;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --page-background: var(--warm-black);
+  --page-foreground: var(--cream);
+  --accent: var(--sky);
+
+  color-scheme: dark;
+
+  font-family: "DM Sans", sans-serif;
+  color: var(--page-foreground);
+  background: var(--page-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --page-background: var(--cream);
+    --page-foreground: var(--berry);
+    --accent: var(--berry);
+
+    color-scheme: light;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+.site {
+  min-height: 100vh;
+  background-color: var(--page-background);
+  color: var(--page-foreground);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
