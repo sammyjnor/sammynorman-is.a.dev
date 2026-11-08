@@ -72,7 +72,7 @@ function Interests() {
             >
                 <motion.img
                     className="profile-headshot"
-                    src="/images/sammy2.JPG"
+                    src={`${import.meta.env.BASE_URL}images/sammy2.JPG`}
                     alt="Sammy"
                     variants={profileContentVariants}
                 />
@@ -205,7 +205,7 @@ function Interests() {
                                 />
                             ) : (
                                 <img
-                                    src={activeInterestData.image}
+                                    src={`${import.meta.env.BASE_URL}${activeInterestData.image}`}
                                     alt={activeInterestData.title}
                                 />
                             )}

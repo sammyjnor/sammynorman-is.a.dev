@@ -38,12 +38,12 @@ function InterestVideo({ image, title, video }: InterestVideoProps) {
     return (
         <div className={`interest-media${hasEnded ? " interest-media-ended" : ""}`}>
             <div className={`interest-media-frame${videoVisible && videoReady && !hasEnded ? " interest-media-video-active" : ""}`}>
-                <img src={image} alt={title} />
+                <img src={`${import.meta.env.BASE_URL}${image}`} alt={title} />
 
                 {videoVisible && (
                     <video
                         ref={videoRef}
-                        src={video}
+                        src={`${import.meta.env.BASE_URL}${video}`}
                         title={`${title} video`}
                         autoPlay
                         controls

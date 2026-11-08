@@ -85,7 +85,7 @@ function Polaroid({interest, index, isActive, onOpen, onClose}: PolaroidProps) {
         >
             <div className="polaroid-inner">
                 <div className="polaroid-front">
-                    <img src={interest.image} alt="" />
+                    <img src={`${import.meta.env.BASE_URL}${interest.image}`} alt="" />
                     <DancingStarHeading as="h3" className="polaroid-h3">{interest.title}</DancingStarHeading>
                     <span className={`polaroid-category${isHovered ? " polaroid-category-visible" : ""}`} aria-hidden="true">
                         {categoryText.slice(0, typedCategoryLength)}

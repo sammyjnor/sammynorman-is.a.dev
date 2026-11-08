@@ -210,7 +210,7 @@ function Landing() {
                 animate={{opacity: 1, scale: 1}}
                 transition={{duration: 0.8}}
             >
-                <img src="/images/sammy.jpg" alt="Sammy" />
+                <img src={`${import.meta.env.BASE_URL}images/sammy.jpg`} alt="Sammy" />
             </motion.div>
         </section>
     );
