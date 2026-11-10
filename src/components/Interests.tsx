@@ -5,22 +5,16 @@ import InterestVideo from "./InterestVideo";
 import Polaroid from "./Polaroid";
 import DancingStarHeading from "./DancingStarHeading";
 
-// Keep profile links together here so platforms and destinations are easy to edit.
-const socialLinkGroups = [
+// Keep profile links together here so destinations are easy to edit.
+const profileLinks = [
     {
-        label: "Professional",
-        links: [
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/samantha-norman-comsci" },
-            { label: "GitHub", href: "https://github.com/sammyjnor/" },
-        ],
+        label: "Download Resume",
+        href: `${import.meta.env.BASE_URL}resume.pdf`,
+        download: true,
     },
-    {
-        label: "Social",
-        links: [
-            { label: "Postcrossing", href: "https://www.postcrossing.com/user/kcehlilpy" },
-            { label: "Instagram", href: "https://www.instagram.com/sammyjnor" },
-        ],
-    },
+    { label: "Email Me", href: "mailto:samanthajnorman@outlook.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/samantha-norman-comsci" },
+    { label: "GitHub", href: "https://github.com/sammyjnor/" },
 ];
 
 const profilePanelVariants = {
@@ -70,12 +64,25 @@ function Interests() {
                 initial="hidden"
                 animate={polaroidsInView ? "visible" : "hidden"}
             >
-                <motion.img
-                    className="profile-headshot"
-                    src={`${import.meta.env.BASE_URL}images/sammy2.JPG`}
-                    alt="Sammy"
-                    variants={profileContentVariants}
-                />
+                <motion.div className="profile-headshot-frame" variants={profileContentVariants}>
+                    <motion.img
+                        className="profile-headshot"
+                        src={`${import.meta.env.BASE_URL}images/sammy2.JPG`}
+                        alt="Sammy"
+                    />
+                    <span className="profile-headshot-star profile-headshot-star-one" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><path d="M100 12 Q103 10 105 17 L125 65 Q127 70 133 70 L184 74 Q193 75 187 82 L148 115 Q144 119 146 125 L158 175 Q160 184 152 179 L106 153 Q100 150 94 153 L48 179 Q40 184 42 175 L54 125 Q56 119 52 115 L13 82 Q7 75 16 74 L67 70 Q73 70 75 65 L95 17 Q97 10 100 12 Z" /></svg>
+                    </span>
+                    <span className="profile-headshot-star profile-headshot-star-two" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><path d="M100 12 Q103 10 105 17 L125 65 Q127 70 133 70 L184 74 Q193 75 187 82 L148 115 Q144 119 146 125 L158 175 Q160 184 152 179 L106 153 Q100 150 94 153 L48 179 Q40 184 42 175 L54 125 Q56 119 52 115 L13 82 Q7 75 16 74 L67 70 Q73 70 75 65 L95 17 Q97 10 100 12 Z" /></svg>
+                    </span>
+                    <span className="profile-headshot-star profile-headshot-star-three" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><path d="M100 12 Q103 10 105 17 L125 65 Q127 70 133 70 L184 74 Q193 75 187 82 L148 115 Q144 119 146 125 L158 175 Q160 184 152 179 L106 153 Q100 150 94 153 L48 179 Q40 184 42 175 L54 125 Q56 119 52 115 L13 82 Q7 75 16 74 L67 70 Q73 70 75 65 L95 17 Q97 10 100 12 Z" /></svg>
+                    </span>
+                    <span className="profile-headshot-star profile-headshot-star-four" aria-hidden="true">
+                        <svg viewBox="0 0 200 200"><path d="M100 12 Q103 10 105 17 L125 65 Q127 70 133 70 L184 74 Q193 75 187 82 L148 115 Q144 119 146 125 L158 175 Q160 184 152 179 L106 153 Q100 150 94 153 L48 179 Q40 184 42 175 L54 125 Q56 119 52 115 L13 82 Q7 75 16 74 L67 70 Q73 70 75 65 L95 17 Q97 10 100 12 Z" /></svg>
+                    </span>
+                </motion.div>
 
                 <motion.h2
                     className="profile-panel-heading"
@@ -86,23 +93,19 @@ function Interests() {
 
                 <motion.div className="profile-socials" variants={profileContentVariants}>
                     <nav aria-label="Social media">
-                        {socialLinkGroups.map((group) => (
-                            <section className="profile-link-group" key={group.label}>
-                                <h3 className="profile-link-group-heading">{group.label}</h3>
-                                {group.links.map(({ label, href }, index) => (
-                                    <a
-                                        className={`profile-social-link ${label === "LinkedIn" ? "profile-social-link-featured" : ""} ${index % 2 === 0 ? "profile-social-link-sky" : "profile-social-link-berry"}`}
-                                        href={href}
-                                        key={label}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        <DancingStarHeading as="h3" className="profile-social-heading">
-                                            {label}
-                                        </DancingStarHeading>
-                                    </a>
-                                ))}
-                            </section>
+                        {profileLinks.map(({ label, href, download }, index) => (
+                            <a
+                                className={`profile-social-link ${label === "LinkedIn" ? "profile-social-link-featured" : ""} ${index % 2 === 0 ? "profile-social-link-sky" : "profile-social-link-berry"}`}
+                                href={href}
+                                download={download ? "Sammy-Norman-Resume.pdf" : undefined}
+                                key={label}
+                                target={download ? undefined : "_blank"}
+                                rel={download ? undefined : "noreferrer"}
+                            >
+                                <DancingStarHeading as="h3" className="profile-social-heading">
+                                    {label}
+                                </DancingStarHeading>
+                            </a>
                         ))}
                     </nav>
                 </motion.div>

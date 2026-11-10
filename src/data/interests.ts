@@ -50,16 +50,16 @@ export const interests: Interest[] = [
     },
     {
         id: 5,
-        title: "Adventures",
+        title: "Travelin'",
         taglines: [],
         image: "images/travel.jpg",
         description: "Travel, new places, and getting out of my comfort zone.",
     },
     {
         id: 6,
-        title: "Curiosity",
+        title: "Dungeons & Dragons",
         taglines: [],
         image: "images/curiosity.jpg",
-        description: "The random things I learn, make, and get obsessed with.",
+        description: "Rolling dice, telling stories, and going on adventures with friends.",
     },
 ];
